@@ -1068,11 +1068,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.iOS\\GasolinerasVIP.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.iOS\\GasolinerasVIP.iOS.csproj",
       "projectName": "GasolinerasVIP.iOS",
-      "projectPath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.iOS\\GasolinerasVIP.iOS.csproj",
+      "projectPath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.iOS\\GasolinerasVIP.iOS.csproj",
       "packagesPath": "C:\\Users\\batma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.iOS\\obj\\",
+      "outputPath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1093,8 +1093,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj": {
-              "projectPath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj"
+            "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj": {
+              "projectPath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj"
             }
           }
         }

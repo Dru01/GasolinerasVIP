@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pnON8W+CP05u2iLc5J6FCBEgNFhOKsSjabWjMrNY7K50lA+GtM6az8qcv4sLP4Sy4RB9QXiWWH0jCT4YbSMULA==",
+  "dgSpecHash": "/GaF29Q/RKyVlSO/JVmjMRXc8f/klpQUjTJKXFyldIQBPVG4uvo6MaPzacnWCZHu7qqa97NzerjyfT3CmBcKew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.Android\\GasolinerasVIP.Android.csproj",
+  "projectFilePath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.Android\\GasolinerasVIP.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\batma\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\batma\\.nuget\\packages\\xamarin.androidx.activity\\1.2.4.1\\xamarin.androidx.activity.1.2.4.1.nupkg.sha512",

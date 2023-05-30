@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TzLJPpoZ/dAVUe/fAjBpHj90iA18drOiSTvqAkBk+jHpIAFEgR4u/n9i3n0EgY+M0jxX35Fs3jIKruiN9osKdw==",
+  "dgSpecHash": "f6/dMZYNwLk1V+r7RNiRbDWqgIIhRmpTB7emspENqObYNophW8zlUaYoW69CmooqT9XaFxwNtvD1WsBgo1DfgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj",
+  "projectFilePath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\batma\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\batma\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

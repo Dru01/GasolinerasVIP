@@ -3414,11 +3414,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.Android\\GasolinerasVIP.Android.csproj",
+      "projectUniqueName": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.Android\\GasolinerasVIP.Android.csproj",
       "projectName": "GasolinerasVIP.Android",
-      "projectPath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.Android\\GasolinerasVIP.Android.csproj",
+      "projectPath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.Android\\GasolinerasVIP.Android.csproj",
       "packagesPath": "C:\\Users\\batma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.Android\\obj\\",
+      "outputPath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -3439,8 +3439,8 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj": {
-              "projectPath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj"
+            "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj": {
+              "projectPath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP\\GasolinerasVIP.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5ncbC3piySAOjHJtIS+jWquGzs5hJ4Oo+D8CRDCeKL2UQ2Kp5J5IeFu20EC8kOCn5Jezk3xyei6sA+nxU6R3ug==",
+  "dgSpecHash": "TBVtHKQBH/Rg/h8SV1HvcfRhjoyWF+oPE4IGu4K3ioWm++mXH9NSfztv3NggRegezUjt1Lmvng8KWKr5yl3F8Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\batma\\source\\repos\\GasolinerasVIP\\GasolinerasVIP.iOS\\GasolinerasVIP.iOS.csproj",
+  "projectFilePath": "C:\\Users\\batma\\Source\\Repos\\Dru01\\GasolinerasVIP\\GasolinerasVIP.iOS\\GasolinerasVIP.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\batma\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\batma\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
