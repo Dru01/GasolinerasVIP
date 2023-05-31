@@ -1,5 +1,4 @@
-﻿using GasolinerasVIP.API.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace GuiaDCEA.API.Data
 {
@@ -14,7 +13,5 @@ namespace GuiaDCEA.API.Data
         {
             base.OnModelCreating(builder);
         }
-
-        public DbSet<Test> registroTest { get; set; }
     }
 }
