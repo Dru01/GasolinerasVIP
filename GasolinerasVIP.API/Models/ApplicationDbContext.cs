@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using GasolinerasVIP.API.Models;
 
 namespace GuiaDCEA.API.Data
 {
@@ -15,5 +16,7 @@ namespace GuiaDCEA.API.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Transaction> Transaction{ get; set; }
     }
 }
