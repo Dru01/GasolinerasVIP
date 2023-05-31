@@ -1,0 +1,1 @@
+C:\Users\batma\Source\Repos\Dru01\GasolinerasVIP\GasolinerasVIP.UWP\GasolinerasVIP.UWP.csproj;x64
