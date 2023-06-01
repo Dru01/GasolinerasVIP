@@ -7,7 +7,7 @@
         <Label Text="Usuario"/>
         <Entry x:Name="user"/>
         <Label Text="Contraseña"/>
-        <Entry x:Name="password"/>
+        <Entry x:Name="password" IsPassword="true"/>
         <Button Text="Ingresar" Clicked="LogInBtn" />
         <Button Text="Registrarme" Clicked="RegisterBtn" />
     </StackLayout>
