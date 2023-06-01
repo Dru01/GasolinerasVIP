@@ -4,5 +4,6 @@
             x:Class="GasolinerasVIP.Views.MainPage"
             xmlns:local="clr-namespace:GasolinerasVIP.Views">
     <local:NearPage/>
+    <local:OrdersListPage/>
     <local:MyUserPage/>
 </TabbedPage>

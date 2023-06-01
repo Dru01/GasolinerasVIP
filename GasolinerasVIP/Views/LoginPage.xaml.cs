@@ -18,7 +18,7 @@ namespace GasolinerasVIP.Views
         }
         private async void LogInBtn(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PushAsync(new MainPage(1));
         }
         private async void RegisterBtn(object sender, EventArgs e)
         {

@@ -12,7 +12,7 @@ namespace GasolinerasVIP.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
-        public MainPage()
+        public MainPage(int user)
         {
             InitializeComponent();
         }
