@@ -58,7 +58,17 @@ namespace GasolinerasVIP.Views
         }
         private async void Btn_RealizarCompra(object sender, EventArgs e)
         {
-            await DisplayAlert("Comprando!", "Hola", "Mundo");
+            // GenerateOrder
+            Order myOrder = new Order()
+            {
+                Id= 1,
+                userId= 1,
+                Station = gasStation,
+                OrderedMagna = Double.Parse(MagnaQt.Text),
+                OrderedPremium = Double.Parse(PremiumQt.Text),
+                state= 1,
+            };
+            await Navigation.PushAsync(new PaymentPage(myOrder));
         }
     }
 }

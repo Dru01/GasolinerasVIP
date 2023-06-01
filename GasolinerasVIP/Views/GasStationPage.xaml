@@ -16,14 +16,14 @@
                     <StackLayout Orientation="Horizontal" WidthRequest="220" HorizontalOptions="CenterAndExpand">
                         <Label Text="Magna" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
                         <Entry x:Name="MagnaQt" Text="0" FontSize="25" WidthRequest="50" VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="End" Keyboard="Numeric" Completed="Magna_Entry"/>
-                        <Label Text="Lt" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End" />
+                        <Label Text="Lt" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End" />
                     </StackLayout>
                 </Frame>
                 <Frame BackgroundColor="#F04040" WidthRequest="220" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10">
                     <StackLayout Orientation="Horizontal" WidthRequest="220" HorizontalOptions="CenterAndExpand">
                         <Label Text="Premium" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
                         <Entry x:Name="PremiumQt" Text="0" FontSize="25" WidthRequest="50" VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="End" Keyboard="Numeric" Completed="Premium_Entry"/>
-                        <Label Text="Lt" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End" />
+                        <Label Text="Lt" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" />
                     </StackLayout>
                 </Frame>
                 <Label Text="Detalles de Pedido" FontSize="30" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
