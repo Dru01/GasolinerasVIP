@@ -6,7 +6,10 @@
              IconImageSource="icon_gas.png">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <ListView x:Name="GasStationList" RowHeight="130">
+            <ListView x:Name="GasStationList" 
+                      RowHeight="130" 
+                      IsPullToRefreshEnabled="true" 
+                      ItemSelected="GasStation_Selected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

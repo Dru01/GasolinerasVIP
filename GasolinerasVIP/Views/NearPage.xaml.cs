@@ -44,5 +44,11 @@ namespace GasolinerasVIP.Views
             this.GasStations.Add(gasStation1);
             this.GasStations.Add(gasStation2);
         }
+
+        private async void GasStation_Selected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var gasStation = (GasStation)e.SelectedItem;
+            await Navigation.PushAsync(new GasStationPage(gasStation));
+        }
     }
 }
