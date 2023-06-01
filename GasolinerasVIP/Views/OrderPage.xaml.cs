@@ -44,7 +44,7 @@ namespace GasolinerasVIP.Views
 
         private async void ListOrdersBtn(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new OrdersListPage());
+			await Navigation.PushAsync(new MainPage(1 /*User Id*/));
         }
 
     }

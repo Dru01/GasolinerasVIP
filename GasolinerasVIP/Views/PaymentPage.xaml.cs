@@ -117,7 +117,7 @@ namespace GasolinerasVIP.Views
         }
         private async void AddCardsClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Error", "Feature no implementada aun", "Volver");
+            await Navigation.PushAsync(new AddCardPage(userId));
         }
         private async void PaymentSelected(object sender, SelectedItemChangedEventArgs e)
         {
