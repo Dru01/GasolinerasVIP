@@ -1,4 +1,5 @@
-﻿using GasolinerasVIP.Views;
+﻿using GasolinerasVIP.Services;
+using GasolinerasVIP.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,10 +8,13 @@ namespace GasolinerasVIP
 {
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
+
+            DependencyService.Register<MockDataStore>();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using GasolinerasVIP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,14 +15,7 @@ namespace GasolinerasVIP.Views
         public LoginPage()
         {
             InitializeComponent();
-        }
-        private async void LogInBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage(1));
-        }
-        private async void RegisterBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new RegisterPage());
+            this.BindingContext = new LoginViewModel();
         }
     }
 }
