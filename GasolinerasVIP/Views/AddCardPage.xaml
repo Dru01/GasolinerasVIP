@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasolinerasVIP.Views.AddCardPage">
+    <ContentPage.Content>
+        <StackLayout Padding="30">
+            <Label HorizontalTextAlignment="Center" FontSize="40" Padding="0, 0, 0, 30" Text="Agregar Tarjeta"/>
+            <Label Text="Numero de Tarjeta"/>
+            <Entry x:Name="CardNumber"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="Vencimiento"/>
+                    <Entry x:Name="CardExp"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="CVV"/>
+                    <Entry x:Name="cvv"/>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Titular de la tarjeta"/>
+            <Entry x:Name="NameOnCard"/>
+            <Label Text="Apodo para la tarjeta"/>
+            <Entry x:Name="CardName"/>
+            <Button Text="Agregar" Clicked="AddCardClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

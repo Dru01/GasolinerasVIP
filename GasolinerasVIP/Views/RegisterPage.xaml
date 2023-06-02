@@ -1,14 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GasolinerasVIP.Views.LoginPage">
+             x:Class="GasolinerasVIP.Views.RegisterPage">
     <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-        <Image Source="Logo.png" />
         <Label Text="Usuario"/>
         <Entry x:Name="user"/>
         <Label Text="Contraseña"/>
-        <Entry x:Name="password" IsPassword="true"/>
-        <Button Text="Ingresar" Clicked="LogInBtn" />
+        <Entry x:Name="password"/>
+        <Label Text="Nombre Completo"/>
+        <Entry x:Name="name"/>
+        <Label Text="Correo Electronico"/>
+        <Entry x:Name="mail"/>
         <Button Text="Registrarme" Clicked="RegisterBtn" />
     </StackLayout>
 </ContentPage>

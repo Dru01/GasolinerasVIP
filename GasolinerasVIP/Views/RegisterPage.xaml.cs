@@ -10,19 +10,15 @@ using Xamarin.Forms.Xaml;
 namespace GasolinerasVIP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class RegisterPage : ContentPage
     {
-        public LoginPage()
+        public RegisterPage()
         {
             InitializeComponent();
         }
-        private async void LogInBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage(1));
-        }
         private async void RegisterBtn(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterPage());
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }

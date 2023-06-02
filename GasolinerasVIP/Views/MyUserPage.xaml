@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasolinerasVIP.Views.MyUserPage"
+             Title="Mi usuario"
+             IconImageSource="icon_usuario.png">
+    <ContentPage.Content>
+        <StackLayout x:Name="MainStack" Padding="20, 20, 20, 20" HorizontalOptions="CenterAndExpand">
+            <StackLayout Padding="0, 0, 0, 20" Orientation="Horizontal">
+                <Image Source="icon_usuario.png" HeightRequest="100"/>
+                <Label Text="Pepe Pecas Pica Papas" FontSize="40" TextColor="Black"/>
+            </StackLayout>
+            <Label Text="Datos Personales" FontSize="30" TextColor="Black"/>
+            <StackLayout Padding="0, 20, 0, 0" Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="Correo:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
+                <Entry Text="hola.mundo@correo.com" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Padding="0, 20, 0, 20" Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="Telefono:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
+                <Entry Text="+00 0123456789" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <ListView x:Name="CardsList" 
+                      IsPullToRefreshEnabled = "true"
+                      RowHeight = "90"
+                      BackgroundColor = "#F5F5F5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="DeleteCard"
+                                          CommandParameter="{Binding .}"
+                                          Text="OnMore"/>
+                                <MenuItem Clicked="DeleteCard"
+                                          CommandParameter="{Binding Id}"
+                                          Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="CreditCard.jpg" WidthRequest="100"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding CardNickName}"/>
+                                    <Label Text="{Binding CardNumber}" />
+                                    <Label Text="{Binding ShortED, StringFormat='Vencimiento: {0}'}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
