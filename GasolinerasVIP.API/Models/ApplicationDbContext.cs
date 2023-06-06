@@ -17,6 +17,7 @@ namespace GuiaDCEA.API.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Transaction> Transaction{ get; set; }
+        public virtual DbSet<Transaction> Transaction{ get; set; }
+        public virtual DbSet<GasStation> GasStation { get; set; }
     }
 }
