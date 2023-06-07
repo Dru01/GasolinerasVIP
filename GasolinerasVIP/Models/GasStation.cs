@@ -37,16 +37,16 @@ namespace GasolinerasVIP.Models
         public string Address { get; set; }
 
         [JsonProperty("rating")]
-        public double Rating { get; set; }
+        public decimal Rating { get; set; }
 
         [JsonProperty("magnaPrice")]
-        public double MagnaPrice { get; set; }
+        public decimal MagnaPrice { get; set; }
 
         [JsonProperty("premiumPrice")]
-        public double PremiumPrice { get; set; }
+        public decimal PremiumPrice { get; set; }
 
         [JsonProperty("dieselPrice")]
-        public double DieselPrice { get; set; }
+        public decimal DieselPrice { get; set; }
 
         [JsonProperty("imageUrl")]
         public Uri ImageUrl { get; set; }
