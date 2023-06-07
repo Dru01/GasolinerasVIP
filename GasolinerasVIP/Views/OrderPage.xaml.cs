@@ -25,13 +25,13 @@ namespace GasolinerasVIP.Views
             MagnaPrice.Text   = String.Format("${0:f2}", myOrder.Station.MagnaPrice);
             PremiumPrice.Text = String.Format("${0:f2}", myOrder.Station.PremiumPrice);
 
-			double tMagna   = myOrder.Station.MagnaPrice * myOrder.OrderedMagna;
-			double tPremium = myOrder.Station.PremiumPrice * myOrder.OrderedPremium;
+			decimal tMagna   = myOrder.Station.MagnaPrice * myOrder.OrderedMagna;
+			decimal tPremium = myOrder.Station.PremiumPrice * myOrder.OrderedPremium;
 
 			TotalMagnaPrice.Text   = String.Format("${0:f2}", tMagna);
 			TotalPremiumPrice.Text = String.Format("${0:f2}", tPremium);
 
-			double total = tMagna + tPremium + 30.00;
+			decimal total = tMagna + tPremium + 30.00m;
             TotalBill.Text = String.Format("${0:f2}", total);
 
 			if (myOrder.state >= 1)
