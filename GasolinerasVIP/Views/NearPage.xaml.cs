@@ -28,8 +28,8 @@ namespace GasolinerasVIP.Views
                 ImageUrl = new System.Uri("https://lh3.googleusercontent.com/p/AF1QipNm5gQLj4HK63lxadUYf1adjysbjKdIZDNpNc10=s1360-w1360-h1020"),
                 Name = "Oxxo Gas",
                 //Location = new Tuple<double, double>(20.996465436160733, -101.28841488455917),
-                PremiumPrice = 20.00,
-                MagnaPrice = 17.00
+                PremiumPrice = 20.00m,
+                MagnaPrice = 17.00m
             };
             GasStation gasStation2 = new GasStation()
             {
@@ -37,8 +37,8 @@ namespace GasolinerasVIP.Views
                 ImageUrl = new System.Uri("https://lh3.googleusercontent.com/p/AF1QipO1EJEpwv5_hIUm-G5czSrJ9pp_FGyV4d75qgQI=s1360-w1360-h1020"),
                 Name = "Pemex",
                 //Location = new Tuple<double, double>(21.010613656306617, -101.27001362367888),
-                PremiumPrice = 19.63,
-                MagnaPrice = 17.42
+                PremiumPrice = 19.63m,
+                MagnaPrice = 17.42m
             };
 
             this.GasStations.Add(gasStation1);

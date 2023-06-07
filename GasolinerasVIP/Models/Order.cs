@@ -9,8 +9,8 @@ namespace GasolinerasVIP.Models
         public int Id { get; set; }
         public int userId { get; set; }
         public GasStation Station { get; set; }
-        public double OrderedMagna { get; set; }
-        public double OrderedPremium { get; set; }
+        public decimal OrderedMagna { get; set; }
+        public decimal OrderedPremium { get; set; }
         private DateTime _transactionTime;
         public DateTime TransactionTime
         {
