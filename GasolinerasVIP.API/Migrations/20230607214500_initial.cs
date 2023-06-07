@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GasolinerasVIP.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,11 +60,10 @@ namespace GasolinerasVIP.API.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PriceMagna = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PricePremium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PriceDiesel = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ProfileURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfileName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    MagnaPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PremiumPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DieselPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -188,9 +187,12 @@ namespace GasolinerasVIP.API.Migrations
                     ReceivedOrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeliveredOrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    GasType = table.Column<int>(type: "int", nullable: false),
-                    GasPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Liters = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MagnaPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderedMagna = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PremiumPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderedPremium = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DieselPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderedDiesel = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Tax = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ServiceFee = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
