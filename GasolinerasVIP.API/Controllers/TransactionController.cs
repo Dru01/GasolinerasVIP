@@ -20,14 +20,11 @@ namespace GasolinerasVIP.API.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> PostTransaction(Transaction transaction)
         {
-            //transaction.GasStation = 
             transaction.GasStation = await context.GasStation.SingleAsync(t => t.Id == transaction.GasStationId);
             context.Transaction.Add(transaction);
             await context.SaveChangesAsync();
             transaction = await context.Transaction.Include(e => e.GasStation).FirstAsync(t => t.Id == transaction.Id);
-            //return transaction.Id;
             return CreatedAtAction(nameof(GetTransactionById), new { id = transaction.Id }, transaction);
-            //return CreatedAtAction(nameof(GetTr), new { id = transaction.Id }, transaction);
         }
 
         [HttpGet]
