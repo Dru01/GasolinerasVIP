@@ -20,17 +20,24 @@ namespace GasolinerasVIP.API.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> PostTransaction(Transaction transaction)
         {
-            context.Add(transaction);
+            transaction.GasStation = await context.GasStation.SingleAsync(t => t.Id == transaction.GasStationId);
+            context.Transaction.Add(transaction);
             await context.SaveChangesAsync();
-            return transaction.Id;
+            transaction = await context.Transaction.Include(e => e.GasStation).FirstAsync(t => t.Id == transaction.Id);
+            return CreatedAtAction(nameof(GetTransactionById), new { id = transaction.Id }, transaction);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Transaction>>> GetTransactionList()
+        {
+            return await context.Transaction.Include(e => e.GasStation).ToListAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransactionById(int id)
         {
-            var transaction =  await context.Transaction.FindAsync(id);
-            if(transaction == null) { return NotFound(); }
-            return transaction;
+            if (!TransactionExists(id)) { return NotFound(); }
+            return await context.Transaction.Include(e => e.GasStation).SingleAsync(i => i.Id == id);
         }
 
         private bool TransactionExists(int id)

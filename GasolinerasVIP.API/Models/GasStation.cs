@@ -14,11 +14,9 @@
         public string Description { get; set; }
         public string Address { get; set; }
         public decimal Rating { get;set; }
-        public decimal PriceMagna { get; set; }
-        public decimal PricePremium { get; set; }
-        public decimal PriceDiesel { get; set; }
-        public string ProfileURL { get; set; }
-
-        public string ProfileName { get; set; }
+        public decimal MagnaPrice { get; set; }
+        public decimal PremiumPrice { get; set; }
+        public decimal DieselPrice { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

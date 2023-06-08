@@ -38,26 +38,22 @@ namespace GasolinerasVIP.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("DieselPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("MagnaPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("PriceDiesel")
+                    b.Property<decimal>("PremiumPrice")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("PriceMagna")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("PricePremium")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ProfileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProfileURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(18,2)");
@@ -85,19 +81,28 @@ namespace GasolinerasVIP.API.Migrations
                     b.Property<decimal>("DeliveryFee")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("Disccount")
+                    b.Property<decimal>("DieselPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("GasPrice")
+                    b.Property<decimal>("Disccount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("GasStationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GasType")
-                        .HasColumnType("int");
+                    b.Property<decimal>("MagnaPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("Liters")
+                    b.Property<decimal>("OrderedDiesel")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("OrderedMagna")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("OrderedPremium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PremiumPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("ReceivedOrderDate")
