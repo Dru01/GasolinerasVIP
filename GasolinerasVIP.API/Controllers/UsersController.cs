@@ -1,5 +1,6 @@
 ﻿using GasolinerasVIP.API.Models;
 using GuiaDCEA.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace GasolinerasVIP.API.Controllers
             this.signInManager = signInManager;
         }
 
-        [HttpPost("singup")]
+        [HttpPost("SingUp")]
         public async Task<ActionResult> singup([FromBody] UserInfo userInfo)
         {
             var user = new IdentityUser { UserName = userInfo.username, Email = userInfo.email };
@@ -40,23 +41,34 @@ namespace GasolinerasVIP.API.Controllers
                 return BadRequest(result.Errors);
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<UserToken>> login([FromBody] UserLogin userLogin)
         {
-            var resul = await signInManager.PasswordSignInAsync(
+            var ans = await signInManager.PasswordSignInAsync(
                 userLogin.username,
                 userLogin.password,
                 isPersistent:false,
                 lockoutOnFailure:false
             );
-            if (resul.Succeeded)
+            if (ans.Succeeded)
             {
+                ClaimsPrincipal currentUser = this.User;
                 return GetUserToken(userLogin);
             }
             else
             {
                 return BadRequest("Login incorrecto");
             }
+        }
+
+        [HttpGet("CurrUserId")]
+        [Authorize]
+        public async Task<ActionResult<int>> curr_user_id()
+        {
+            var ans = await userManager.GetUserAsync(User);
+            if (ans == null)
+                return NotFound();
+            return int.Parse(ans.Id);
         }
 
         private UserToken GetUserToken(UserLogin userLogin)
