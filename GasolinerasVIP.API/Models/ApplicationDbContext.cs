@@ -5,7 +5,7 @@ using GasolinerasVIP.API.Models;
 
 namespace GuiaDCEA.API.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
