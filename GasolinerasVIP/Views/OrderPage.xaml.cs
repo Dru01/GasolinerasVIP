@@ -25,14 +25,14 @@ namespace GasolinerasVIP.Views
             MagnaPrice.Text   = String.Format("${0:f2}", myTransaction.MagnaPrice);
             PremiumPrice.Text = String.Format("${0:f2}", myTransaction.PremiumPrice);
 
-			decimal tMagna   = myTransaction.MagnaPrice * myTransaction.OrderedMagna;
-			decimal tPremium = myTransaction.PremiumPrice * myTransaction.OrderedPremium;
+            TotalMagnaPrice.Text = String.Format("${0:f2}", myTransaction.MagnaPrice * myTransaction.OrderedMagna);
+            TotalPremiumPrice.Text = String.Format("${0:f2}", myTransaction.PremiumPrice * myTransaction.OrderedPremium);
 
-			TotalMagnaPrice.Text   = String.Format("${0:f2}", tMagna);
-			TotalPremiumPrice.Text = String.Format("${0:f2}", tPremium);
-
-			decimal total = tMagna + tPremium + 30.00m;
-            TotalBill.Text = String.Format("${0:f2}", total);
+            TaxLbl.Text = String.Format("${0:f2}", myTransaction.Tax);
+            DescuentoLbl.Text = String.Format("${0:f2}", myTransaction.Disccount);
+            EnvioLbl.Text = String.Format("${0:f2}", myTransaction.DeliveryFee);
+            SubtotalLbl.Text = String.Format("${0:f2}", myTransaction.Subtotal);
+            TotalLbl.Text = String.Format("${0:f2}", myTransaction.Total);
 
 			if (myTransaction.Status >= 1)
 				StationChecker.Source = "FilledCircle.png";
