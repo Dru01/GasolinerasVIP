@@ -25,6 +25,12 @@ namespace GasolinerasVIP.API.Controllers
             return transaction.Id;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<Transaction>>> GetTransactionList()
+        {
+            return await context.Transaction.ToListAsync();
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransactionById(int id)
         {
