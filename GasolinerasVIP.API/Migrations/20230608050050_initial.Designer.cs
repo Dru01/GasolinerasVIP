@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GasolinerasVIP.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230607214500_initial")]
+    [Migration("20230608050050_initial")]
     partial class initial
     {
         /// <inheritdoc />

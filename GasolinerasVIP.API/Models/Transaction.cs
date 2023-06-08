@@ -1,4 +1,7 @@
-﻿namespace GasolinerasVIP.API.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GasolinerasVIP.API.Models
 {
     enum Status
     {
@@ -10,7 +13,9 @@
     {
         public int Id { get; set; }
         // Needed UserID
-        public GasStation GasStation { get; set; }
+        [ForeignKey("GasStation")]
+        public int GasStationId { get; set; }
+        public virtual GasStation GasStation { get; set; }
         public string Address { get; set; } 
         public DateTime ReceivedOrderDate { get; set; }
         public DateTime DeliveredOrderDate { get; set; }
