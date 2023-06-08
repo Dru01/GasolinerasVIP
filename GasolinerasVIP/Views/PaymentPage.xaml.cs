@@ -12,12 +12,14 @@ namespace GasolinerasVIP.Views
     {
         private int userId;
         private bool CardPaymentActive = false;
-        Order myOrder;
-        public PaymentPage(Order order)
+        Transaction myTransaction;
+        Client client = new Client();
+        public PaymentPage(Transaction transaction)
         {
             InitializeComponent();
-            userId = order.userId;
-            myOrder = order;
+            //userId = order.userId;
+            userId = 1;
+            myTransaction = transaction;
         }
 
         void CardPaymentClicked(object sender, EventArgs e)
@@ -121,7 +123,8 @@ namespace GasolinerasVIP.Views
         }
         private async void PaymentSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new OrderPage(myOrder));
+            await client.PostTransaction(myTransaction);
+            await Navigation.PushAsync(new OrderPage(myTransaction));
         }
     }
 }

@@ -73,11 +73,20 @@ namespace GasolinerasVIP.Models
 
         [JsonProperty("total")]
         public decimal Total { get; set; }
+
+        public void CalculateBill()
+        {
+            Subtotal = MagnaPrice * OrderedMagna + PremiumPrice * OrderedPremium + DieselPrice * OrderedDiesel;
+            Tax = Subtotal * 0.16m;
+            Disccount = Subtotal * 0.10m;
+            Total = Subtotal + Tax + ServiceFee + DeliveryFee - Disccount;
+        }
     }
 
    
     public partial class Transaction
     {
-        public static Transaction FromJson(string json) => JsonConvert.DeserializeObject<Transaction>(json, GasolinerasVIP.Models.Converter.Settings);
+        public static List<Transaction> FromJson(string json) => JsonConvert.DeserializeObject<List<Transaction>>(json, GasolinerasVIP.Models.Converter.Settings);
     }
+
 }

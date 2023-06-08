@@ -13,6 +13,7 @@ namespace GasolinerasVIP.Views
     public partial class NearPage : ContentPage
     {
         public List<GasStation> GasStations = new List<GasStation>();
+        Client client = new Client();
         public NearPage()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace GasolinerasVIP.Views
         // TODO: Change this with the DB when ready.
         private async void chargeGasStationsDB()
         {
-            GasStations = await Client.GetGasStations();
+            GasStations = await client.GetGasStations();
             this.GasStationList.ItemsSource = this.GasStations;
 
         }

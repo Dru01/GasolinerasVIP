@@ -15,7 +15,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding ImageUrl}" HeightRequest="130"/>
+                                    <Image Source="{Binding GasStation.ImageUrl}" HeightRequest="130"/>
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding StationName}" TextColor="#1a1818" FontSize="26" />
                                         <Label Text="{Binding Date}" TextColor="Black" />

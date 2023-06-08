@@ -59,16 +59,35 @@ namespace GasolinerasVIP.Views
         private async void Btn_RealizarCompra(object sender, EventArgs e)
         {
             // GenerateOrder
-            Order myOrder = new Order()
+            Transaction transaction = new Transaction()
             {
-                Id= 1,
-                userId= 1,
-                Station = gasStation,
+                GasStationId = gasStation.Id,
+                GasStation = gasStation,
+                ReceivedOrderDate = DateTime.Now,
+                DeliveredOrderDate = DateTime.Now,  
+                Status = 1,
+                MagnaPrice = gasStation.MagnaPrice,
                 OrderedMagna = Decimal.Parse(MagnaQt.Text),
+                PremiumPrice = gasStation.PremiumPrice,
                 OrderedPremium = Decimal.Parse(PremiumQt.Text),
-                state= 1,
+                ServiceFee = 30.00m,
+                DeliveryFee = 20.00m,
+
+                Address = "calle",
+
+
             };
-            await Navigation.PushAsync(new PaymentPage(myOrder));
+            transaction.CalculateBill();
+            //Order myOrder = new Order()
+            //{
+            //    Id= 1,
+            //    userId= 1,
+            //    Station = gasStation,
+            //    OrderedMagna = Decimal.Parse(MagnaQt.Text),
+            //    OrderedPremium = Decimal.Parse(PremiumQt.Text),
+            //    state= 1,
+            //};
+            await Navigation.PushAsync(new PaymentPage(transaction));
         }
     }
 }

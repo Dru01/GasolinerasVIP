@@ -59,7 +59,8 @@ namespace GasolinerasVIP.Models
 
     public static class Serialize
     {
-        public static string ToJson(this List<GasStation> self) => JsonConvert.SerializeObject(self, GasolinerasVIP.Models.Converter.Settings);
+        public static string ToJson(this GasStation self) => JsonConvert.SerializeObject(self, GasolinerasVIP.Models.Converter.Settings);
+        public static string ToJson(this Transaction self) => JsonConvert.SerializeObject(self, GasolinerasVIP.Models.Converter.Settings);
     }
 
     internal static class Converter
