@@ -23,30 +23,26 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
     options.Password.RequireNonAlphanumeric = true;
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-builder.Services.AddAuthentication(x =>
-{
+builder.Services.AddAuthentication(x => {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(o =>
-{
+}).AddJwtBearer(o => {
+    var Key = Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]);
     o.SaveToken = true;
     o.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidIssuer = "GasolinerasVIP.API",
-        ValidAudience = "GasolinerasVIP.API",
-        ValidateAudience = true,
-        ValidateIssuer = true,
+        ValidateIssuer = true, // on production make it true
+        ValidateAudience = true, // on production make it true
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("iuash129diuha.osadqw-/AAQDsibsqw12912")
-            ),
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidAudience = builder.Configuration["JWT:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Key),
         ClockSkew = TimeSpan.Zero
     };
     o.Events = new JwtBearerEvents
     {
-        OnAuthenticationFailed = context =>
-        {
+        OnAuthenticationFailed = context => {
             if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
             {
                 context.Response.Headers.Add("IS-TOKEN-EXPIRED", "true");
