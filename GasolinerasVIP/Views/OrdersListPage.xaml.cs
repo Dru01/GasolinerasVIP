@@ -23,12 +23,12 @@ namespace GasolinerasVIP.Views
 	{
         public List<Transaction> orders = new List<Transaction>();
         public List<MyOrder> myOrders = new List<MyOrder>();
-        public int userId;
+        public string userId;
         Client client = new Client();   
-        public OrdersListPage (int UserId)
+        public OrdersListPage ()
 		{
 			InitializeComponent ();
-			userId= UserId;
+			userId= Client.GetCurrUserId().Result;
             fetchOrders();
             
         }
@@ -38,8 +38,6 @@ namespace GasolinerasVIP.Views
             parseOrders();
             ReceiptsList.ItemsSource = orders;
         }
-
-
 
         void parseOrders()
         {
