@@ -20,6 +20,9 @@ namespace GasolinerasVIP.Models
         [JsonProperty("id")]
         public long Id { get; set; }
 
+        [JsonProperty("applicationUserId")]
+        public Guid? ApplicationUserId { get; set; }
+
         [JsonProperty("gasStationId")]
         public long GasStationId { get; set; }
 

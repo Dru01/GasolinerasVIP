@@ -34,7 +34,7 @@ namespace GasolinerasVIP.Views
         }
         async void fetchOrders()
         {
-            orders = await client.GetTransactions();
+            orders = await client.GetUserTransactions(userId);
             parseOrders();
             ReceiptsList.ItemsSource = orders;
         }
