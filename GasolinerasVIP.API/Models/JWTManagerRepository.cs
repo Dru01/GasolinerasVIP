@@ -33,7 +33,8 @@ namespace GasolinerasVIP.API.Models
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]{
-                            new Claim(ClaimTypes.Name, userName)
+                            new Claim(ClaimTypes.Name, userName),
+                            new Claim(ClaimTypes.NameIdentifier, userName)
                         }
                     ),
                     Audience = iconfiguration["JWT:Audience"],
