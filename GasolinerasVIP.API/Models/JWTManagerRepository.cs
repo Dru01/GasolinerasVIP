@@ -32,11 +32,13 @@ namespace GasolinerasVIP.API.Models
                 var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new Claim[]
-                  {
-                 new Claim(ClaimTypes.Name, userName)
-                  }),
-                    Expires = DateTime.Now.AddMinutes(1),
+                    Subject = new ClaimsIdentity(new Claim[]{
+                            new Claim(ClaimTypes.Name, userName)
+                        }
+                    ),
+                    Audience = iconfiguration["JWT:Audience"],
+                    Issuer = iconfiguration["JWT:Issuer"],
+                    Expires = DateTime.UtcNow.AddMinutes(5),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -80,7 +82,6 @@ namespace GasolinerasVIP.API.Models
             {
                 throw new SecurityTokenException("Invalid token");
             }
-
 
             return principal;
         }
