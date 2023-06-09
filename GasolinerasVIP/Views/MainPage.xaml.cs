@@ -12,11 +12,11 @@ namespace GasolinerasVIP.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
-        public MainPage(int userId)
+        public MainPage()
         {
             Children.Add(new NearPage());
-            Children.Add(new OrdersListPage(userId));
-            Children.Add(new MyUserPage(userId));
+            Children.Add(new OrdersListPage());
+            Children.Add(new MyUserPage());
         }
     }
 }
