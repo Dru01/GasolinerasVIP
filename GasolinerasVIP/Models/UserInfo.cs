@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GasolinerasVIP.API.Models
+namespace GasolinerasVIP.Models
 {
     public class UserInfo
     {
