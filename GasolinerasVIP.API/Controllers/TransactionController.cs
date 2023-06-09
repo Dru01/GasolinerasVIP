@@ -39,6 +39,12 @@ namespace GasolinerasVIP.API.Controllers
             return await context.Transaction.Include(e => e.GasStation).SingleAsync(i => i.Id == id);
         }
 
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<List<Transaction>>> GetTransactionByUserId(string userId)
+        {
+            return await context.Transaction.Include(e => e.GasStation).Where(predicate: e => e.ApplicationUserId == userId).ToListAsync();
+        }
+
         private bool TransactionExists(int id)
         {
             return context.Transaction.Any(e => e.Id == id);

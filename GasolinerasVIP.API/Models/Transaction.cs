@@ -12,10 +12,12 @@ namespace GasolinerasVIP.API.Models
     public class Transaction
     {
         public int Id { get; set; }
-        // Needed UserID
+        [ForeignKey("ApplicationUser")]
+        public string? ApplicationUserId { get; set; }   
+
         [ForeignKey("GasStation")]
         public int GasStationId { get; set; }
-        public virtual GasStation GasStation { get; set; }
+        public virtual GasStation? GasStation { get; set; }
         public string Address { get; set; } 
         public DateTime ReceivedOrderDate { get; set; }
         public DateTime DeliveredOrderDate { get; set; }
