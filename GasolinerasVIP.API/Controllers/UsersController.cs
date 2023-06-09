@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -57,7 +58,6 @@ namespace GasolinerasVIP.API.Controllers
             );
             if (!ans.Succeeded)
                 return BadRequest("Login incorrecto");
-            ClaimsPrincipal currentUser = this.User;
             var token = jWTManager.GenerateToken(userLogin.username);
             if (token == null)
             {
@@ -78,17 +78,17 @@ namespace GasolinerasVIP.API.Controllers
 
         [HttpGet("CurrUserId")]
         [Authorize]
-        public async Task<ActionResult<int>> curr_user_id()
+        public async Task<ActionResult<string>> curr_user_id()
         {
-            var ans = await userManager.GetUserAsync(User);
-            if (ans == null)
+            var user = User.Identity;
+            if (user == null)
                 return NotFound();
-            return int.Parse(ans.Id);
+            return context.Users.SingleAsync(i => i.UserName == user.Name).Result.Id;
         }
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("refresh")]
+        [Route("Refresh")]
         public IActionResult Refresh(Token token)
         {
             var principal = jWTManager.GetPrincipalFromExpiredToken(token.Access_Token);

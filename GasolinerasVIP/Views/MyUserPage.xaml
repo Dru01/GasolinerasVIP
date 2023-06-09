@@ -19,34 +19,6 @@
                 <Label Text="Telefono:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
                 <Entry Text="+00 0123456789" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
             </StackLayout>
-
-            <ListView x:Name="CardsList" 
-                      IsPullToRefreshEnabled = "true"
-                      RowHeight = "90"
-                      BackgroundColor = "#F5F5F5">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Clicked="DeleteCard"
-                                          CommandParameter="{Binding .}"
-                                          Text="OnMore"/>
-                                <MenuItem Clicked="DeleteCard"
-                                          CommandParameter="{Binding Id}"
-                                          Text="Delete" IsDestructive="True" />
-                            </ViewCell.ContextActions>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="CreditCard.jpg" WidthRequest="100"/>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding CardNickName}"/>
-                                    <Label Text="{Binding CardNumber}" />
-                                    <Label Text="{Binding ShortED, StringFormat='Vencimiento: {0}'}" />
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

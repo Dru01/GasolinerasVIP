@@ -21,22 +21,13 @@ namespace GasolinerasVIP.Views
         }
         private async void LogInBtn(object sender, EventArgs e)
         {
-            HttpClient client = new HttpClient();
-            var url = "https://gasolinerasvip.azurewebsites.net/Users/Login";
-            UserLogin userLogin = new UserLogin { username = user.Text, password = password.Text };
-            StringContent content = new StringContent(JsonConvert.SerializeObject(userLogin), Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage = await client.PostAsync(url, content);
-            if (!responseMessage.IsSuccessStatusCode)
+            HttpResponseMessage responseMessage = Client.LogIn(new UserLogin { username = user.Text, password = password.Text }).Result;
+            if(!responseMessage.IsSuccessStatusCode)
             {
                 await DisplayAlert("Datos incorrectos", responseMessage.ReasonPhrase, "ok");
                 return;
             }
-            var json = responseMessage.Content.ReadAsStringAsync().Result;
-            UserToken userToken = JsonConvert.DeserializeObject<UserToken>(json);
-
-            await SecureStorage.SetAsync("token", userToken.token);
-
-            await Navigation.PushAsync(new MainPage(1));
+            await Navigation.PushAsync(new MainPage());
         }
         private async void RegisterBtn(object sender, EventArgs e)
         {
