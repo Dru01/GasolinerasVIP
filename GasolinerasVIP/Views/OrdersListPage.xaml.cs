@@ -34,6 +34,7 @@ namespace GasolinerasVIP.Views
         }
         async void fetchOrders()
         {
+            //userId = "30c57b07-62ef-4e2f-8fe7-e9c3fc97d63f";
             orders = await client.GetUserTransactions(userId);
             parseOrders();
             ReceiptsList.ItemsSource = orders;
@@ -41,6 +42,8 @@ namespace GasolinerasVIP.Views
 
         void parseOrders()
         {
+            if(orders == null)
+                orders = new List<Transaction>();
             foreach (var order in orders)
             {
                  myOrders.Add(new MyOrder()

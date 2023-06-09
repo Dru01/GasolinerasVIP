@@ -32,14 +32,14 @@ namespace GasolinerasVIP.API.Controllers
             return await context.Transaction.Include(e => e.GasStation).ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         public async Task<ActionResult<Transaction>> GetTransactionById(int id)
         {
             if (!TransactionExists(id)) { return NotFound(); }
             return await context.Transaction.Include(e => e.GasStation).SingleAsync(i => i.Id == id);
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("userid/{userId}")]
         public async Task<ActionResult<List<Transaction>>> GetTransactionByUserId(string userId)
         {
             return await context.Transaction.Include(e => e.GasStation).Where(predicate: e => e.ApplicationUserId == userId).ToListAsync();
