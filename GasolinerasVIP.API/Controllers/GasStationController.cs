@@ -62,5 +62,16 @@ namespace GasolinerasVIP.API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteGasStation(int id)
+        {
+            var GasStationItem = await context.GasStation.FindAsync(id);
+            if (GasStationItem == null)
+                return NotFound();
+            context.GasStation.Remove(GasStationItem);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }

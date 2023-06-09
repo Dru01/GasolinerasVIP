@@ -14,61 +14,79 @@ namespace GasolinerasVIP.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GasStationPage : ContentPage
     {
-        private double TotalMagna   = 0.0;
-        private double TotalPremium = 0.0;
-        private double Total = 0.0;
         GasStation gasStation;
+        Transaction transaction;
         public GasStationPage(GasStation gasStation)
         {
             InitializeComponent();
             this.gasStation = gasStation;
+            transaction = new Transaction()
+            {
+                GasStationId = gasStation.Id,
+                GasStation = gasStation,
+                ReceivedOrderDate = DateTime.Now,
+                DeliveredOrderDate = DateTime.Now,
+                Status = 1,
+                MagnaPrice = gasStation.MagnaPrice,
+                OrderedMagna = 0.00m,
+                PremiumPrice = gasStation.PremiumPrice,
+                OrderedPremium = 0.00m,
+                ServiceFee = 0.00m,
+                DeliveryFee = 30.00m,
+
+                Address = "Domicilio",
+            };
             GasName.Text  = gasStation.Name;
             GasImg.Source = gasStation.ImageUrl;
-            
+
             MagnaQtDtl.Text   = MagnaQt.Text;
             PremiumQtDtl.Text = PremiumQt.Text;
-            
+
             MagnaPrice.Text   = String.Format("${0:f2}", gasStation.MagnaPrice);
             PremiumPrice.Text = String.Format("${0:f2}" ,gasStation.PremiumPrice);
-            
-            TotalMagna   = Double.Parse(MagnaQt.Text) * gasStation.MagnaPrice;
-            TotalPremium = Double.Parse(PremiumQt.Text) * gasStation.PremiumPrice;
 
-            TotalMagnaPrice.Text   = String.Format("${0:f2}", TotalMagna);
-            TotalPremiumPrice.Text = String.Format("${0:f2}", TotalPremium);
+            TotalMagnaPrice.Text   = String.Format("${0:f2}", transaction.MagnaPrice * transaction.OrderedMagna);
+            TotalPremiumPrice.Text = String.Format("${0:f2}", transaction.PremiumPrice * transaction.OrderedPremium);
 
-            Total = TotalMagna + TotalPremium + 30.00;
-            TotalLbl.Text = String.Format("${0:f2}", Total);
+
+            transaction.CalculateBill();
+            TaxLbl.Text = String.Format("${0:f2}", transaction.Tax);
+            DescuentoLbl.Text = String.Format("${0:f2}", transaction.Disccount);
+            EnvioLbl.Text = String.Format("${0:f2}", transaction.DeliveryFee);
+            SubtotalLbl.Text = String.Format("${0:f2}", transaction.Subtotal);
+            TotalLbl.Text = String.Format("${0:f2}", transaction.Total);            
         }
         void Magna_Entry(object sender, EventArgs e)
         {
             MagnaQtDtl.Text = MagnaQt.Text;
-            TotalMagna = Double.Parse(MagnaQt.Text) * gasStation.MagnaPrice;
-            TotalMagnaPrice.Text = String.Format("${0:f2}", TotalMagna);
-            Total = TotalMagna + TotalPremium + 30.00;
-            TotalLbl.Text = String.Format("${0:f2}", Total);
+            transaction.OrderedMagna = Decimal.Parse(MagnaQt.Text);
+            TotalMagnaPrice.Text = String.Format("${0:f2}", transaction.MagnaPrice * transaction.OrderedMagna);
+
+            transaction.CalculateBill();
+            TaxLbl.Text = String.Format("${0:f2}", transaction.Tax);
+            DescuentoLbl.Text = String.Format("${0:f2}", transaction.Disccount);
+            EnvioLbl.Text = String.Format("${0:f2}", transaction.DeliveryFee);
+            SubtotalLbl.Text = String.Format("${0:f2}", transaction.Subtotal);
+            TotalLbl.Text = String.Format("${0:f2}", transaction.Total);            
         }
         void Premium_Entry(object sender, EventArgs e)
         {
             PremiumQtDtl.Text = PremiumQt.Text;
-            TotalPremium = Double.Parse(PremiumQt.Text) * gasStation.PremiumPrice;
-            TotalPremiumPrice.Text = String.Format("${0:f2}", TotalPremium);
-            Total = TotalMagna + TotalPremium + 30.00;
-            TotalLbl.Text = String.Format("${0:f2}", Total);
+            transaction.OrderedPremium = Decimal.Parse(PremiumQt.Text);
+            TotalPremiumPrice.Text = String.Format("${0:f2}", transaction.PremiumPrice * transaction.OrderedPremium);
+
+            transaction.CalculateBill();
+            TaxLbl.Text = String.Format("${0:f2}", transaction.Tax);
+            DescuentoLbl.Text = String.Format("${0:f2}", transaction.Disccount);
+            EnvioLbl.Text = String.Format("${0:f2}", transaction.DeliveryFee);
+            SubtotalLbl.Text = String.Format("${0:f2}", transaction.Subtotal);
+            TotalLbl.Text = String.Format("${0:f2}", transaction.Total);
         }
+       
         private async void Btn_RealizarCompra(object sender, EventArgs e)
         {
-            // GenerateOrder
-            Order myOrder = new Order()
-            {
-                Id= 1,
-                userId= 1,
-                Station = gasStation,
-                OrderedMagna = Double.Parse(MagnaQt.Text),
-                OrderedPremium = Double.Parse(PremiumQt.Text),
-                state= 1,
-            };
-            await Navigation.PushAsync(new PaymentPage(myOrder));
+            transaction.CalculateBill();
+            await Navigation.PushAsync(new PaymentPage(transaction));
         }
     }
 }
