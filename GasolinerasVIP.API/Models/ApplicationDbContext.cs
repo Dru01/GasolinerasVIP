@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using GasolinerasVIP.API.Models;
 
-namespace GuiaDCEA.API.Data
+namespace GasolinerasVIP.API.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -19,5 +19,6 @@ namespace GuiaDCEA.API.Data
 
         public virtual DbSet<Transaction> Transaction{ get; set; }
         public virtual DbSet<GasStation> GasStation { get; set; }
+        public virtual DbSet<UserRefreshToken> UserRefreshToken { get; set; }
     }
 }

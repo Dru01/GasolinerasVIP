@@ -2,7 +2,7 @@
 
 namespace GasolinerasVIP.API.Models
 {
-    public class UserRefreshTokens
+    public class UserRefreshToken
     {
         [Key]
         public int Id { get; set; }
