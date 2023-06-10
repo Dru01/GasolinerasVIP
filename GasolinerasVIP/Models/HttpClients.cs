@@ -31,6 +31,14 @@ namespace GasolinerasVIP.Models
             return transactions;
         }
 
+        public async Task<List<Transaction>> GetUserTransactions(string userId)
+        {
+            var response = await sharedClient.GetAsync("Transaction/userid/" + userId);
+            var jsonResponse = response.Content.ReadAsStringAsync().Result;
+            List<Transaction> transactions = Transaction.FromJson(jsonResponse);
+            return transactions;
+        }
+
         public async Task PostTransaction(Transaction transaction)
         {
             string jsonString = Serialize.ToJson(transaction);

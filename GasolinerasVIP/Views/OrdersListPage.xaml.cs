@@ -34,13 +34,16 @@ namespace GasolinerasVIP.Views
         }
         async void fetchOrders()
         {
-            orders = await client.GetTransactions();
+            //userId = "30c57b07-62ef-4e2f-8fe7-e9c3fc97d63f";
+            orders = await client.GetUserTransactions(userId);
             parseOrders();
             ReceiptsList.ItemsSource = orders;
         }
 
         void parseOrders()
         {
+            if(orders == null)
+                orders = new List<Transaction>();
             foreach (var order in orders)
             {
                  myOrders.Add(new MyOrder()

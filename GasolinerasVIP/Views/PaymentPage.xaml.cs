@@ -32,6 +32,7 @@ namespace GasolinerasVIP.Views
         }
         private async void PaymentSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            myTransaction.ApplicationUserId = Guid.Parse(userId);
             await client.PostTransaction(myTransaction);
             await Navigation.PushAsync(new OrderPage(myTransaction));
         }
