@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -38,6 +39,13 @@ namespace GasolinerasVIP.Models
             HttpResponseMessage response = await sharedClient.PostAsync("Transaction", content);
         }
 
+        public static async void save_token(Token token)
+        {
+            await SecureStorage.SetAsync("Access_Token", token.Access_Token);
+            await SecureStorage.SetAsync("Refresh_Token", token.Refresh_Token);
+            sharedClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Access_Token);
+        }
+
         public static async Task<HttpResponseMessage> LogIn(UserLogin user)
         {
             HttpResponseMessage responseMessage = await sharedClient.PostAsync(
@@ -48,11 +56,7 @@ namespace GasolinerasVIP.Models
                 )
             ).ConfigureAwait(false);
             if (responseMessage.IsSuccessStatusCode)
-            {
-                Token token = JsonConvert.DeserializeObject<Token>(responseMessage.Content.ReadAsStringAsync().Result);
-                await SecureStorage.SetAsync("Access_Token", token.Access_Token);
-                await SecureStorage.SetAsync("Refresh_Token", token.Refresh_Token);
-            }
+                save_token(JsonConvert.DeserializeObject<Token>(responseMessage.Content.ReadAsStringAsync().Result));
             return responseMessage;
 
         }
@@ -117,10 +121,7 @@ namespace GasolinerasVIP.Models
             ).ConfigureAwait(false);
             if (!responseMessage.IsSuccessStatusCode)
                 return TaskStatus.Canceled;
-            var json = responseMessage.Content.ReadAsStringAsync().Result;
-            var token = JsonConvert.DeserializeObject<Token>(json);
-            await SecureStorage.SetAsync("Access_Token", token.Access_Token);
-            await SecureStorage.SetAsync("Refresh_Token", token.Refresh_Token);
+            save_token(JsonConvert.DeserializeObject<Token>(responseMessage.Content.ReadAsStringAsync().Result));
             return TaskStatus.RanToCompletion;
         }
 
