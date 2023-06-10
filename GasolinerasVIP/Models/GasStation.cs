@@ -57,7 +57,7 @@ namespace GasolinerasVIP.Models
         public static List<GasStation> FromJson(string json) => JsonConvert.DeserializeObject<List<GasStation>>(json, GasolinerasVIP.Models.Converter.Settings);
     }
 
-    public static class Serialize
+    public static partial class Serialize
     {
         public static string ToJson(this GasStation self) => JsonConvert.SerializeObject(self, GasolinerasVIP.Models.Converter.Settings);
         public static string ToJson(this Transaction self) => JsonConvert.SerializeObject(self, GasolinerasVIP.Models.Converter.Settings);

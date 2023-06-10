@@ -36,11 +36,26 @@ namespace GasolinerasVIP.API.Controllers
             this.userServiceRepository = userServiceRepository;
         }
 
-        [HttpPost("SingUp")]
-        public async Task<ActionResult> singup([FromBody] UserInfo userInfo)
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser([FromBody] UserInfo user)
         {
-            var user = new ApplicationUser { UserName = userInfo.username, Email = userInfo.email, FullName = userInfo.fullname };
-            var result = await userManager.CreateAsync(user, userInfo.password);
+            string Id = GetCurrUserId().Result.Value;
+            if (string.IsNullOrEmpty(Id))
+                return NotFound();
+            var ans = await context.Users.SingleAsync(i => i.Id == Id);
+            if (ans == null)
+                return NotFound();
+            ans.PhoneNumber = user.PhoneNumber;
+            ans.Address = user.Address;
+            context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost("SingUp")]
+        public async Task<ActionResult> SingUp([FromBody] UserRegistry userRegistry)
+        {
+            var user = new ApplicationUser { UserName = userRegistry.username, Email = userRegistry.email, FullName = userRegistry.fullname };
+            var result = await userManager.CreateAsync(user, userRegistry.password);
             if (result.Succeeded)
                 return Ok();
             else
@@ -48,13 +63,13 @@ namespace GasolinerasVIP.API.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<Token>> login([FromBody] UserLogin userLogin)
+        public async Task<ActionResult<Token>> LogIn([FromBody] UserLogin userLogin)
         {
             var ans = await signInManager.PasswordSignInAsync(
                 userLogin.username,
                 userLogin.password,
-                isPersistent:false,
-                lockoutOnFailure:false
+                isPersistent: false,
+                lockoutOnFailure: false
             );
             if (!ans.Succeeded)
                 return BadRequest("Login incorrecto");
@@ -76,18 +91,30 @@ namespace GasolinerasVIP.API.Controllers
             return Ok(token);
         }
 
-        [HttpGet("CurrUserId")]
+        [HttpGet("CurrUser")]
         [Authorize]
-        public async Task<ActionResult<string>> curr_user_id()
+        public async Task<ActionResult<UserInfo>> GetCurrentUser()
         {
             var user = User.Identity;
             if (user == null)
                 return NotFound();
-            return context.Users.SingleAsync(i => i.UserName == user.Name).Result.Id;
+            var ans = context.Users.SingleAsync(i => i.UserName == user.Name).Result;
+            return new UserInfo { username = ans.UserName, email = ans.Email, fullname = ans.FullName, Address = ans.Address, PhoneNumber = ans.PhoneNumber};
         }
 
-        [AllowAnonymous]
+        [HttpGet("CurrUserId")]
+        [Authorize]
+        public async Task<ActionResult<string>> GetCurrUserId()
+        {
+            var user = User.Identity;
+            if (user == null)
+                return NotFound();
+            var ans = context.Users.SingleAsync(i => i.UserName == user.Name).Result;
+            return ans.Id;
+        }
+
         [HttpPost]
+        [Authorize]
         [Route("Refresh")]
         public IActionResult Refresh(Token token)
         {

@@ -5,20 +5,50 @@
              Title="Mi usuario"
              IconImageSource="icon_usuario.png">
     <ContentPage.Content>
-        <StackLayout x:Name="MainStack" Padding="20, 20, 20, 20" HorizontalOptions="CenterAndExpand">
-            <StackLayout Padding="0, 0, 0, 20" Orientation="Horizontal">
+        <StackLayout x:Name="MainStack" HorizontalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal">
                 <Image Source="icon_usuario.png" HeightRequest="100"/>
-                <Label Text="Pepe Pecas Pica Papas" FontSize="40" TextColor="Black"/>
+                <Label x:Name = "username" Text="" FontSize="40" TextColor="Black"/>
             </StackLayout>
             <Label Text="Datos Personales" FontSize="30" TextColor="Black"/>
-            <StackLayout Padding="0, 20, 0, 0" Orientation="Horizontal" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="Nombre:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
+                <Entry x:Name = "fullname" Text="" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                 <Label Text="Correo:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
-                <Entry Text="hola.mundo@correo.com" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
+                <Entry x:Name = "email" Text="" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
             </StackLayout>
-            <StackLayout Padding="0, 20, 0, 20" Orientation="Horizontal" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                 <Label Text="Telefono:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
-                <Entry Text="+00 0123456789" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
+                <Entry x:Name = "phonenumber" Text="" Placeholder="+5247700000000" FontSize="20" IsReadOnly="true" VerticalOptions="Center"/>
             </StackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                <Label Text="Dirección:" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label Text="Calle:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "street" Text="" Placeholder="Lascuráin de Retana" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                    <Label Text="No.:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "number" Text="" Placeholder="5" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label Text="Colonia:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "colony" Text="" Placeholder="Centro" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                    <Label Text="C.P.:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "cp" Text="" Placeholder="36000" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label Text="Estado:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "state" Text="" Placeholder="Guanajuato" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                    <Label Text="Ciudad:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "city" Text="" Placeholder="Guanajuato" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label Text="País:" FontSize="15" TextColor="Black" VerticalOptions="Center"/>
+                    <Entry x:Name = "country" Text="" Placeholder="México" FontSize="15" IsReadOnly="true" VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+            <Button Text="Guardar" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
