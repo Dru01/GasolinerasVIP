@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GasolinerasVIP.API.Models
+namespace GasolinerasVIP.Models
 {
-    public class UserInfo
+    public class UserRegistry
     {
         public string username { get; set; }
         [EmailAddress]
         public string email { get; set; }
         public string fullname { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
+        public string password { get; set; }
     }
 }

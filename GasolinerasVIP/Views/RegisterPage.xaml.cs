@@ -21,7 +21,7 @@ namespace GasolinerasVIP.Views
         }
         private async void RegisterBtn(object sender, EventArgs e)
         {
-            HttpResponseMessage responseMessage = Client.SignUp(new UserInfo { username = user.Text, email = mail.Text, password = password.Text, fullname = name.Text }).Result;
+            HttpResponseMessage responseMessage = Client.SignUp(new UserRegistry { username = user.Text, email = mail.Text, password = password.Text, fullname = name.Text }).Result;
             if(!responseMessage.IsSuccessStatusCode)
             {
                 await DisplayAlert("Datos incorrectos", responseMessage.ReasonPhrase, "ok");

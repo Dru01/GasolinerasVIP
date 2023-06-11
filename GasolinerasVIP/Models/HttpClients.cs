@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -17,6 +18,7 @@ namespace GasolinerasVIP.Models
         };
         public async Task<List<GasStation>> GetGasStations()
         {
+            await RefreshToken();
             var response = await sharedClient.GetAsync("GasStation");
             var jsonResponse = response.Content.ReadAsStringAsync().Result;
             List<GasStation> gasStations = GasStation.FromJson(jsonResponse);
@@ -25,6 +27,7 @@ namespace GasolinerasVIP.Models
 
         public async Task<List<Transaction>> GetTransactions()
         {
+            await RefreshToken();
             var response = await sharedClient.GetAsync("Transaction");
             var jsonResponse = response.Content.ReadAsStringAsync().Result;
             List<Transaction> transactions = Transaction.FromJson(jsonResponse);
@@ -33,6 +36,7 @@ namespace GasolinerasVIP.Models
 
         public async Task<List<Transaction>> GetUserTransactions(string userId)
         {
+            await RefreshToken();
             var response = await sharedClient.GetAsync("Transaction/userid/" + userId);
             var jsonResponse = response.Content.ReadAsStringAsync().Result;
             List<Transaction> transactions = Transaction.FromJson(jsonResponse);
@@ -41,9 +45,17 @@ namespace GasolinerasVIP.Models
 
         public async Task PostTransaction(Transaction transaction)
         {
+            await RefreshToken();
             string jsonString = Serialize.ToJson(transaction);
             var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await sharedClient.PostAsync("Transaction", content);
+        }
+
+        public static async void save_token(Token token)
+        {
+            await SecureStorage.SetAsync("Access_Token", token.Access_Token);
+            await SecureStorage.SetAsync("Refresh_Token", token.Refresh_Token);
+            sharedClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Access_Token);
         }
 
         public static async Task<HttpResponseMessage> LogIn(UserLogin user)
@@ -56,16 +68,12 @@ namespace GasolinerasVIP.Models
                 )
             ).ConfigureAwait(false);
             if (responseMessage.IsSuccessStatusCode)
-            {
-                Token token = JsonConvert.DeserializeObject<Token>(responseMessage.Content.ReadAsStringAsync().Result);
-                await SecureStorage.SetAsync("Access_Token", token.Access_Token);
-                await SecureStorage.SetAsync("Refresh_Token", token.Refresh_Token);
-            }
+                save_token(JsonConvert.DeserializeObject<Token>(responseMessage.Content.ReadAsStringAsync().Result));
             return responseMessage;
 
         }
 
-        public static async Task<HttpResponseMessage> SignUp(UserInfo user)
+        public static async Task<HttpResponseMessage> SignUp(UserRegistry user)
         {
             return await sharedClient.PostAsync(
                 "Users/SignUp",
@@ -74,6 +82,23 @@ namespace GasolinerasVIP.Models
                     "application/json"
                 )
             ).ConfigureAwait(false);
+        }
+
+        public static async Task<HttpResponseMessage> UpdateCurrUser(UserInfo userInfo)
+        {
+            await RefreshToken();
+            string jsonString = Serialize.ToJson(userInfo);
+            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            return await sharedClient.PutAsync("Users", content).ConfigureAwait(false);
+        }
+
+        public static async Task<UserInfo> GetCurrUser()
+        {
+            await RefreshToken();
+            var response = await sharedClient.GetAsync("Users/CurrUser").ConfigureAwait(false);
+            var jsonResponse = response.Content.ReadAsStringAsync().Result;
+            UserInfo userInfo = UserInfo.FromJson(jsonResponse);
+            return userInfo;
         }
 
         public static async Task<string> GetCurrUserId()
@@ -125,10 +150,7 @@ namespace GasolinerasVIP.Models
             ).ConfigureAwait(false);
             if (!responseMessage.IsSuccessStatusCode)
                 return TaskStatus.Canceled;
-            var json = responseMessage.Content.ReadAsStringAsync().Result;
-            var token = JsonConvert.DeserializeObject<Token>(json);
-            await SecureStorage.SetAsync("Access_Token", token.Access_Token);
-            await SecureStorage.SetAsync("Refresh_Token", token.Refresh_Token);
+            save_token(JsonConvert.DeserializeObject<Token>(responseMessage.Content.ReadAsStringAsync().Result));
             return TaskStatus.RanToCompletion;
         }
 
