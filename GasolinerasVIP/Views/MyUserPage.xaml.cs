@@ -44,7 +44,6 @@ namespace GasolinerasVIP.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             string addres = street.Text + "," + number.Text + "," + colony.Text + "," + cp.Text + "," + state.Text + "," + city.Text + "," + country.Text;
-            Console.WriteLine(addres);
             await Client.UpdateCurrUser(new UserInfo { Username = username.Text, Email = email.Text, Fullname = fullname.Text, PhoneNumber = phonenumber.Text, Address = addres });
         }
     }
