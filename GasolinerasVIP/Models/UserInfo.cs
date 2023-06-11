@@ -22,7 +22,7 @@
         public string PhoneNumber { get; set; }
 
         [JsonProperty("address")]
-        public string Address { get; set; }
+        public string? Address { get; set; }
     }
 
     public partial class UserInfo
