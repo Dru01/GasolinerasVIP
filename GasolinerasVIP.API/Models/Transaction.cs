@@ -34,6 +34,5 @@ namespace GasolinerasVIP.API.Models
         public decimal DeliveryFee { get; set; }
         public decimal Disccount { get; set; }
         public decimal Total { get; set; }
-        // Needed Payment method
     }
 }

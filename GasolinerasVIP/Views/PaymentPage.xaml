@@ -7,10 +7,10 @@
             <StackLayout Padding="30, 10, 30, 10">
                 <Label Text="Selecciona tu Metodo de Pago" FontSize="40" TextColor="Black" HorizontalTextAlignment="Center" />
                 <StackLayout x:Name="CardStackLayout">
-                    <Button Text="Tarjeta de Credito/Debito" FontSize="20" ContentLayout="Left,5" ImageSource="CreditCard.png" HorizontalOptions="FillAndExpand" CornerRadius="10" Clicked="CardPaymentClicked"/>
+                    <Button Text="Tarjeta con terminal" FontSize="20" ContentLayout="Left,5" ImageSource="CreditCard.png" HorizontalOptions="FillAndExpand" CornerRadius="10" Clicked="CardPaymentClicked"/>
                 </StackLayout>
-                <StackLayout x:Name="PaypayStack">
-                    <Button Text="Paypal" FontSize="20" ContentLayout="Left,5" ImageSource="paypal.png" HorizontalOptions="FillAndExpand" CornerRadius="10" Clicked="PaypalPaymentClicked"/>
+                <StackLayout x:Name="CashStack">
+                    <Button Text="Pago en efectivo" FontSize="20" ContentLayout="Left,5" ImageSource="cash.png" HorizontalOptions="FillAndExpand" CornerRadius="10" Clicked="CashPaymentClicked"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

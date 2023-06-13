@@ -51,7 +51,7 @@ namespace GasolinerasVIP.API.Controllers
             return Ok();
         }
 
-        [HttpPost("SingUp")]
+        [HttpPost("SignUp")]
         public async Task<ActionResult> SingUp([FromBody] UserRegistry userRegistry)
         {
             var user = new ApplicationUser { UserName = userRegistry.username, Email = userRegistry.email, FullName = userRegistry.fullname };
