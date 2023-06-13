@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GasolinerasVIP.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230611194949_userInfo")]
-    partial class userInfo
+    [Migration("20230613010223_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
